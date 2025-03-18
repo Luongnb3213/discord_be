@@ -13,13 +13,13 @@ export class Channel {
   @Field(() => ChannelType)
   type: ChannelType;
 
-  @Field()
+  @Field({ nullable: true })
   createdAt: string;
 
-  @Field()
+  @Field({ nullable: true })
   updatedAt: string;
 
-  @Field(() => [Member], { nullable: false })
+  @Field(() => [Member], { nullable: true })
   umembers: Member[];
 }
 
@@ -39,16 +39,16 @@ export class Server {
   @Field()
   id: number;
 
-  @Field()
+  @Field({ nullable: true })
   name: string;
 
-  @Field()
+  @Field({ nullable: true })
   imageUrl: string;
 
   @Field({ nullable: true })
   inviteCode: string;
 
-  @Field()
+  @Field({ nullable: true })
   profileId: number;
 
   @Field(() => Profile, { nullable: true })
@@ -57,6 +57,6 @@ export class Server {
   @Field(() => [Member], { nullable: true })
   members: Member[];
 
-  @Field(() => [Channel])
+  @Field(() => [Channel], { nullable: true })
   channels: Channel[];
 }
